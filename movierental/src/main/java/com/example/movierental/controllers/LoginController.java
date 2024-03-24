@@ -3,12 +3,10 @@ package com.example.movierental.controllers;
 import com.example.movierental.dto.login.UserLoginDTO;
 import com.example.movierental.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class LoginController {
@@ -16,17 +14,19 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserLoginDTO userLoginDTO) {
+    public String login(UserLoginDTO userLoginDTO, Model model) {
         if (userService.authenticateUser(userLoginDTO)) {
-            return ResponseEntity.ok("Login successful");
+            // If login is successful, redirect to a success page or home page
+            return "redirect:/home"; // Adjust the redirect as necessary
         } else {
-            return ResponseEntity.badRequest().body("Invalid username or password");
+            // Add error message to model and return to login page
+            model.addAttribute("loginError", true);
+            return "login";
         }
     }
+
     @GetMapping("/login")
-    public String showLoginPage() {
+    public String showLoginPage(Model model) {
         return "login";
     }
-
 }
-
