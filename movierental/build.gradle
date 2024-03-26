@@ -30,6 +30,13 @@ dependencies {
     // MySQL Connector/J
     implementation 'mysql:mysql-connector-java:8.0.29'
 
+    // Jakarta Bean Validation API
+    implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final'
+    implementation 'org.glassfish:jakarta.el:3.0.3'
+
+    // Spring Boot Starter Validation for easier integration
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
     runtimeOnly 'mysql:mysql-connector-java'
 
 }

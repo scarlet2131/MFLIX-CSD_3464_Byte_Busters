@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Movie Rental Platform</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <a th:href="@{/}"><img src="/images/logo.png" alt="Logo" th:src="@{/images/logo.png}"></a>
+    </div>
+    <div class="navbar-right">
+        <a th:href="@{/login}">Login</a>
+    </div>
+</div>
+
+<div class="form-container">
+    <h2>Register</h2>
+    <form th:action="@{/register}" th:object="${userDTO}" method="post" class="form-login-register">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" placeholder="Username" required>
+            <div class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" placeholder="Email" required>
+            <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
+            <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+<!--        <div>-->
+<!--            <label for="role">Role:</label>-->
+<!--            <select id="role" th:field="*{role}" required>-->
+<!--                <option value="USER">User</option>-->
+<!--                <option value="ADMIN">Admin</option>-->
+<!--                &lt;!&ndash; Add more roles as necessary &ndash;&gt;-->
+<!--            </select>-->
+<!--            <div class="error" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>-->
+<!--        </div>-->
+        <div>
+            <label for="contactDetails">Contact Details:</label>
+            <input type="text" id="contactDetails" th:field="*{contactDetails}" placeholder="Contact Details" required>
+            <!-- Assuming contact details are required; remove required if not -->
+        </div>
+<!--        <div>-->
+<!--            <label for="isActive">Active:</label>-->
+<!--            <input type="checkbox" id="isActive" th:field="*{isActive}">-->
+<!--        </div>-->
+        <button type="submit">Register</button>
+    </form>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+</div>
+
+</body>
+<br><br><br><br><br><br><br><br>
+<footer>
+    <p>© 2024 Movie Rental Platform. All rights reserved.</p>
+</footer>
+</html>

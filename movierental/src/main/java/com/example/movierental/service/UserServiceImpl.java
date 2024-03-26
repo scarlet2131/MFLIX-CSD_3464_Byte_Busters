@@ -42,6 +42,11 @@ public class UserServiceImpl implements UserService {
         return userDTO;
     }
 
+    @Override
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
     private User mapToEntity(UserDTO userDTO){
         User user = new User();
         user.setUsername(userDTO.getUsername());

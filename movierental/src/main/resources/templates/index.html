@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Movie Rental Platform</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="navbar">
+    <div class="logo">
+        <a th:href="@{/}"><img src="/images/logo.png" alt="Logo" th:src="@{/images/logo.png}"></a>
+    </div>
+    <div class="navbar-right">
+        <a th:href="@{/login}">Login</a>
+    </div>
+</div>
+
+<div class="main-container">
+    <div class="register-box">
+<!--        <input type="email" placeholder="Email address" name="email" required>-->
+        <form th:action="@{/check-email}" method="post">
+            <input type="email" placeholder="Email address" name="email" required>
+            <button type="submit">Get Started</button>
+        </form>
+
+        <!--        <button onclick="location.href='@{/register}'" th:onclick="|location.href='@{/register}'|">Get Started</button>-->
+    </div>
+</div>
+
+<footer>
+    <p>© 2024 Movie Rental Platform. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

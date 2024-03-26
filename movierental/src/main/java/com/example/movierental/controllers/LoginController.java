@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LoginController {
+
     @Autowired
     private UserService userService;
 
@@ -17,7 +18,7 @@ public class LoginController {
     public String login(UserLoginDTO userLoginDTO, Model model) {
         if (userService.authenticateUser(userLoginDTO)) {
             // If login is successful, redirect to a success page or home page
-            return "redirect:/home"; // Adjust the redirect as necessary
+            return "index"; // Adjust the redirect as necessary
         } else {
             // Add error message to model and return to login page
             model.addAttribute("loginError", true);
